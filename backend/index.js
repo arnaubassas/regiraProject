@@ -6,6 +6,7 @@ const register = require('./controllers/register');
 const project = require('./controllers/project');
 const issue = require('./controllers/issue');
 const tag = require('./controllers/tag')
+const comment = require('./controllers/comment')
 const cookieParser = require('cookie-parser');
 
 
@@ -21,6 +22,7 @@ app.use('/api/', register);
 app.use('/api/', project);
 app.use('/api/', issue);
 app.use('/api/', tag);
+app.use('/api/', comment);
 
 // iniciem servidor
 const PORT = 3000;
