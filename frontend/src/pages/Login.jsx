@@ -31,7 +31,7 @@ const Login = () => {
             body: JSON.stringify(credencials)
         }
 
-        fetch(API_URL + 'login', opcions)
+        fetch(API_URL + '/login', opcions)
             .then(resp => resp.json())
             .then(data => {
                 if (!data.error) {
@@ -54,6 +54,7 @@ const Login = () => {
                         </label>
                         <input
                             onChange={handleChange}
+                            name="email"
                             value={credencials.email}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Username" />
                     </div>
@@ -63,7 +64,9 @@ const Login = () => {
                         </label>
                         <input
                             onChange={handleChange}
-                            value={credencials.password} className="shadow appearance-none border
+                            name="password"
+                            value={credencials.password}
+                            className="shadow appearance-none border
                     rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
                     </div>
                     <div className="text-center">
