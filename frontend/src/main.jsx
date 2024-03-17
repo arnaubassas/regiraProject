@@ -7,6 +7,7 @@ import Login from './pages/Login.jsx';
 import Project from './pages/Project.jsx';
 import './index.css'
 import Register from './pages/Register.jsx';
+import NewProject from './pages/NewProject.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -17,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/login" element={<Login />} />
         <Route path="/projects" element={<Project />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path="/project/new" element={<NewProject />} />
       </Route>
     </Routes>
   </BrowserRouter>

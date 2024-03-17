@@ -36,7 +36,7 @@ const Project = () => {
     return (
         <>
             <div className='flex flex-col items-center gap-y-4'>
-                <div className='text-4xl font-semibold underline decoration-solid'>Llista de projectes</div>
+                <div className='text-4xl font-semibold underline decoration-solid'>Project List</div>
 
                 <button className="border p-3 bg-blue-400 rounded-full" onClick={() => redirect('/project/new')}>New Project</button>
                 <div className="flex flex-col">
@@ -49,8 +49,8 @@ const Project = () => {
                                         className="border-b border-neutral-200 font-medium dark:border-white/10">
                                         <tr>
                                             <th scope="col" className="px-6 py-4">#</th>
-                                            <th scope="col" className="px-6 py-4">Nom</th>
-                                            <th scope="col" className="px-6 py-4">Descripcio</th>
+                                            <th scope="col" className="px-6 py-4">Name</th>
+                                            <th scope="col" className="px-6 py-4">Description</th>
                                             <th scope="col" className="px-6 py-4"></th>
                                         </tr>
                                     </thead>
