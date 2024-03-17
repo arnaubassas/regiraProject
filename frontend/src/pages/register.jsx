@@ -1,7 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { useNavigate } from 'react-router-dom';
-import Contexte from "../components/Contexte";
+
 
 const API_URL = 'http://localhost:3000/api';
 
@@ -67,7 +67,7 @@ const Register = () => {
         <>
             <div className="w-full max-w-xs m-auto">
                 <form onSubmit={registerOn} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <h1 className="text-center">Login</h1>
+                    <h1 className="text-center">Sign Up</h1>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                             name
@@ -101,10 +101,10 @@ const Register = () => {
                     <div className="text-center">
                         {validation ?
                             <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                                Register
+                                Sign up
                             </button>
                             : <button disabled={true} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                                Register
+                                Sign up
                             </button>
                         }
                     </div>

@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 // Similar CRUD operations for Issue, User, Project, Tag, and Comment...
 const SECRET_KEY = "en-bryan-sen-va-a-bcn"; // Clau secreta per a la generació de JWT
 
@@ -65,7 +67,8 @@ const checkToken = (req, res, next) => {
 
     try {
         const decodedToken = jwt.verify(token, SECRET_KEY); // Verifica el token utilitzant la clau secreta
-        req.userId = decodedToken.userId; // Estableix l'ID d'usuari a l'objecte de la petició
+        req.userId = decodedToken.userId;
+        console.log(req.userId) // Estableix l'ID d'usuari a l'objecte de la petició
         next(); // Passa al següent middleware
     } catch (error) {
         return res.status(401).json({ error: 'Invalid token' }); // Retorna error 401 si el token és invàlid

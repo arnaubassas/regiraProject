@@ -7,6 +7,7 @@ const project = require('./controllers/project');
 const issue = require('./controllers/issue');
 const tag = require('./controllers/tag')
 const comment = require('./controllers/comment')
+const refresh = require('./controllers/refresh')
 const cookieParser = require('cookie-parser');
 
 
@@ -23,6 +24,7 @@ app.use('/api/', project);
 app.use('/api/', issue);
 app.use('/api/', tag);
 app.use('/api/', comment);
+app.use('/api/', refresh);
 
 // iniciem servidor
 const PORT = 3000;
