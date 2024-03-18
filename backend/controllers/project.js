@@ -4,7 +4,7 @@ const multer = require('multer'); // Importa la llibreria multer per gestionar p
 const bcrypt = require('bcrypt'); // Importa la llibreria bcrypt per a encriptar contrasenyes
 const jwt = require('jsonwebtoken');
 
-const { Project } = require('../models'); // Importa els models de dades
+const { Project, User } = require('../models'); // Importa els models de dades
 const { updateItem, deleteItem, readItem, readItems, checkToken } = require('../data');
 
 

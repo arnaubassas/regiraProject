@@ -44,8 +44,8 @@ function App() {
 
           <div className="flex justify-around p-4 shadow-lg mb-10 items-center bg-white" >
             <div className="flex-1 flex justify-center"><img src={logo} alt="logo" width="30px" height="30px" /> <div className="text-black font-mono text-2xl px-2">Regira</div></div>
-            {loguejat && <div className="flex-1 flex justify-center"><Link className="border px-4 py-2 bg-blue-200 text-black rounded-full" to="/projects">Projects</Link></div>}
-            {loguejat && <div className="flex-1 flex justify-center"><button className="border px-4 py-2 bg-blue-200 text-black rounded-full" onClick={logout}>Logout {loguejat.name}</button></div>}
+            {loguejat && <div className="flex-1 flex justify-center"><Link className="border px-4 py-2 bg-blue-200 hover:bg-blue-300 text-black rounded-full" to="/projects">Projects</Link></div>}
+            {loguejat && <div className="flex-1 flex justify-center"><button className="border px-4 py-2 bg-blue-200 hover:bg-blue-300 text-black rounded-full" onClick={logout}>Logout {loguejat.name}</button></div>}
           </div>
 
           <div >

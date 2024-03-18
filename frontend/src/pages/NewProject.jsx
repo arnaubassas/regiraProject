@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { createProject } from '../general'
 
 const NewProject = () => {
-    const { loguejat, logout } = useContext(Contexte)
-    const [newProject, setNewProject] = useState({ name: "", desc: "", active: true, userId: loguejat?.id })
+    const { logout } = useContext(Contexte)
+    const [newProject, setNewProject] = useState({ name: "", desc: "", active: true })
     const redirect = useNavigate();
 
     const handleChange = (event) => {
@@ -53,10 +53,10 @@ const NewProject = () => {
                                 onChange={handleChange}
                                 name="desc"
                                 value={newProject.desc}
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="desc" type="text" placeholder="Description" />
+                                className="shadow appearance-none border rounded w-full py-2 px-3 h-48 resize-none text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="desc" type="text" placeholder="Description" />
                         </div>
                         <div className="text-center">
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            <button className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                 Create
                             </button>
                         </div>

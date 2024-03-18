@@ -8,6 +8,7 @@ import Project from './pages/Project.jsx';
 import './index.css'
 import Register from './pages/Register.jsx';
 import NewProject from './pages/NewProject.jsx';
+import Kanban from './pages/Kanban.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/projects" element={<Project />} />
         <Route path="/register" element={<Register />} />
         <Route path="/project/new" element={<NewProject />} />
+        <Route path="/kanban/:id" element={<Kanban />} />
       </Route>
     </Routes>
   </BrowserRouter>

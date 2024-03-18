@@ -50,6 +50,7 @@ const createProject = async (information) => {
 
     try {
         const response = await fetch(API_URL + '/project', opcions)
+        console.log(response)
         const data = await response.json()
 
         return data
