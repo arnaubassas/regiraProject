@@ -19,7 +19,7 @@ const Login = () => {
         });
     }
 
-    const loggIn = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         const opcions = {
@@ -46,8 +46,8 @@ const Login = () => {
     return (
         <>
             <div className="flex p-8 justify-center">
-                <div className="flex justify-center w-1/3 bg-white shadow-md rounded-xl px-4 py-8 mb-4">
-                    <form onSubmit={loggIn} className="bg-white px-8 pt-6 pb-8 mb-4 min-w-96">
+                <div className="flex justify-center w-1/3 bg-white shadow-md rounded-xl px-4 py-8 mb-4 min-w-96 ">
+                    <form onSubmit={handleSubmit} className="bg-white px-8 pt-6 pb-8 mb-4 min-w-96">
                         <h1 className="text-center text-3xl font-semibold pb-8">Login</h1>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">

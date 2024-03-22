@@ -9,6 +9,7 @@ import './index.css'
 import Register from './pages/Register.jsx';
 import NewProject from './pages/NewProject.jsx';
 import Kanban from './pages/Kanban.jsx';
+import NewIssue from './pages/NewIssue.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/register" element={<Register />} />
         <Route path="/project/new" element={<NewProject />} />
         <Route path="/kanban/:id" element={<Kanban />} />
+        <Route path="/issue/new/:projectid" element={<NewIssue />} />
       </Route>
     </Routes>
   </BrowserRouter>

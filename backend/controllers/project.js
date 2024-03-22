@@ -4,7 +4,7 @@ const multer = require('multer'); // Importa la llibreria multer per gestionar p
 const bcrypt = require('bcrypt'); // Importa la llibreria bcrypt per a encriptar contrasenyes
 const jwt = require('jsonwebtoken');
 
-const { Project, User } = require('../models'); // Importa els models de dades
+const { Project, User, Issue } = require('../models'); // Importa els models de dades
 const { updateItem, deleteItem, readItem, readItems, checkToken } = require('../data');
 
 
@@ -24,6 +24,18 @@ router.post('/project', checkToken, async (req, res, next) => {
         req.body.userId = req.userId; // Estableix l'ID de l'usuari en el cos de la petició
         const item = await Project.create(req.body); // Crea un nou Projecte amb les dades rebudes
         res.status(201).json(item);
+    } catch (error) {
+        res.status(500).json({ error: error.message }); // Retorna error 500 amb el missatge d'error
+    }
+});
+
+router.get('/project/:project_id/issues', checkToken, async (req, res) => {
+    try {
+        const projecte = await Project.findByPk(req.params.project_id, { include: Issue }); // Cerca el projecte pel seu ID
+        if (!projecte) {
+            return res.status(404).json({ error: 'Projecte no trobat' }); // Retorna error 404 si el projecte no es troba
+        }
+        res.json(projecte); // Retorna el projecte amb els issues
     } catch (error) {
         res.status(500).json({ error: error.message }); // Retorna error 500 amb el missatge d'error
     }
