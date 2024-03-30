@@ -5,6 +5,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Box from '../components/kanba/Box';
 import Item from '../components/kanba/Item';
+import { deleteApi, getApi, patchApi } from "../general";
 
 
 const CAIXES = [
@@ -28,49 +29,30 @@ const Kanban = () => {
 
     const { logout, API_URL } = useContext(Contexte)
 
-    const mouItem = (item, state) => {
-        const opcions = {
-            credentials: 'include',
-            method: 'PATCH',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ state })
-        }
-        fetch(API_URL + '/issue/' + item.id, opcions)
-            .then(r => r.json())
-            .then(data => {
-                console.log(data.error)
-                if (data.error == 'Unauthorized') logout();
-                else setActualitza(actualitza + 1);
-            })
-            .catch(err => console.log(err))
+    const mouItem = async (item, state) => {
+        const link = '/issue/' + item.id
+
+        const data = await patchApi(link, state);
+        if (data.error == 'Unauthorized') logout();
+        else setActualitza(actualitza + 1);
     }
 
-    const eliminaItem = (item) => {
-        const opcions = {
-            credentials: 'include',
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-        fetch(API_URL + '/issue/' + item.id, opcions)
-            .then(r => r.json())
-            .then(data => {
-                if (data.error == 'Unauthorized') logout();
-                else setActualitza(actualitza + 1);
-            })
-            .catch(err => console.log(err))
+
+    const eliminaItem = async (item) => {
+        const linkApi = '/issue/' + item.id
+
+        const data = await deleteApi(linkApi)
+        if (data.error == 'Unauthorized') logout();
+        else setActualitza(actualitza + 1);
+
     }
 
 
     useEffect(() => {
-        const opcions = {
-            credentials: 'include',
-        }
-        fetch(API_URL + '/project/' + id + '/issues', opcions)
-            .then(resp => resp.json())
+
+        const kanbanLink = '/project/' + id + '/issues';
+
+        getApi(kanbanLink)
             .then(data => {
                 if (data.error == 'Unauthorized') logout();
 
@@ -80,10 +62,7 @@ const Kanban = () => {
                     setProjecte(data)
                 }
             })
-            .catch(err => {
-                console.log(err);
-                setError(err)
-            })
+
     }, [actualitza, error, API_URL, id, logout])
 
     if (error) {

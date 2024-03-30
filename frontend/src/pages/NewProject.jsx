@@ -17,13 +17,11 @@ const NewProject = () => {
             [name]: value
         });
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        createProject(newProject)
-            .then(data => {
-                (data.error == 'Unauthorized') ? logout() : redirect('/projects');
-            })
+        const data = await createProject(newProject);
+        (data.error == 'Unauthorized') ? logout() : redirect('/projects');
     }
 
     return (

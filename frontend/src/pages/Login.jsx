@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 
 import { useNavigate } from 'react-router-dom';
 import Contexte from "../components/Contexte";
+import { login } from "../general";
 
-const API_URL = 'http://localhost:3000/api';
 
 const Login = () => {
 
@@ -19,27 +19,16 @@ const Login = () => {
         });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const opcions = {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credencials)
+        const data = await login(credencials);
+
+        if (!data.error) {
+            setLoguejat(data)
+            redirect('/projects')
         }
 
-        fetch(API_URL + '/login', opcions)
-            .then(resp => resp.json())
-            .then(data => {
-                if (!data.error) {
-                    setLoguejat(data)
-                    redirect('/projects')
-                }
-            })
-            .catch(err => console.log(err))
     }
 
 

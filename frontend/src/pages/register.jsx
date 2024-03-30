@@ -30,15 +30,12 @@ const Register = () => {
         }
     }, [credentials])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        createUser(credentials)
-            .then((success) => {
-                if (success) redirect('/login')
-            })
+        const success = await createUser(credentials);
 
-
+        if (success) redirect('/login')
     }
 
 

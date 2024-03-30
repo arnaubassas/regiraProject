@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import Contexte from "../components/Contexte";
+import { createIssue, getApi } from "../general";
 
 
 const issue_by_default = { title: "", desc: "", issue_type: "", priority: "", state: "backlog", assigneeId: "" }
-const API_URL = 'http://localhost:3000/api';
 
 const NewIssue = () => {
 
@@ -15,12 +15,13 @@ const NewIssue = () => {
     const redirect = useNavigate();
 
     useEffect(() => {
-        fetch(API_URL + '/user')
-            .then(resp => resp.json())
+        const userLink = "/user"
+
+        getApi(userLink)
             .then(data => {
                 setAssignedList(data)
             })
-            .catch(err => console.log(err))
+
     }, [setAssignedList])
 
 
@@ -31,24 +32,12 @@ const NewIssue = () => {
             [name]: value
         });
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const opcions = {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(issue)
-        }
+        const data = await createIssue(issue, projectid);
+        (data.error == 'Unauthorized') ? logout() : redirect('/kanban/' + projectid);
 
-        fetch(API_URL + '/issue/project/' + projectid, opcions)
-            .then(resp => resp.json())
-            .then(data => {
-                (data.error == 'Unauthorized') ? logout() : redirect('/kanban/' + projectid);
-                console.log("1", data.error)
-            })
     }
 
 
